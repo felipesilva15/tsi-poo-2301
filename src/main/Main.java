@@ -111,25 +111,19 @@ public class Main {
 //        System.out.println("Média aritimética dos valores do vetor: " + calcularMedia(vetorInteiros));
         
         Scanner sc = new Scanner(System.in, "latin1");
-        
         String frutas[] = {"carambola", "maça", "pera", "uva", "laranja", "goiaba", "ameixa", "mamão", "melancia", "framboesa", "pitanga", "açaí", "graviola", "banana", "maracujá"};
     
         System.out.println("Pesquise uma fruta pelo nome");
         String nome = sc.next();
-        
         System.out.println(pesquisar(frutas, nome));
         
         System.out.println("Pesquise uma fruta pelo índice");
         int indice = sc.nextInt();
-        
         System.out.println(pesquisar(frutas, indice));
         
         System.out.println("Pesquise uma fruta pelo caractere");
         char caractere = sc.next().charAt(0);
-        
-        String frutasFiltradas[] = pesquisar(frutas, caractere);
-
-        System.out.println(Arrays.toString(frutasFiltradas));
+        Arrays.toString(pesquisar(frutas, caractere));
     }
     
     static void modificar(int []vetor){
