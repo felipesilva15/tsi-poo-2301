@@ -1,75 +1,72 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package main;
-
 import java.util.ArrayList;
 
-/**
- *
- * @author felipe.ssantos80
- */
 public class Carro {
-    private String marca, modelo; 
+    private String marca, modelo;
     private int velocidade;
     private Motor motor;
-    private ArrayList<Roda> rodas;
-    
-    public Carro(String marca, String modelo, Motor motor, ArrayList<Roda> rodas){
+    private ArrayList<Roda> listaRodas;
+
+    public Carro(String marca, String modelo, Motor motor, ArrayList<Roda> listaRodas) {
         this.marca = marca;
         this.modelo = modelo;
         this.motor = motor;
-        this.rodas = rodas;
+        this.listaRodas = listaRodas;
     }
-    
-    public String getMarca(){
+
+    public String getMarca() {
         return this.marca;
     }
-    
-    public String getModelo(){
+
+    public String getModelo() {
         return this.modelo;
     }
-    
-    public Motor getMotor(){
+
+    public Motor getMotor() {
         return this.motor;
     }
-    
-    public ArrayList<Roda> getRodas(){
-        return this.rodas;
+
+    public ArrayList<Roda> getListaRodas() {
+        return this.listaRodas;
     }
-    
-    public void acelerar(){
-        if(this.velocidade == 140){
+
+    public int getVelocidade() {
+        return this.velocidade;
+    }
+
+    public void acelerar() {
+        if (this.velocidade == 140) {
             return;
         }
-        
+
         this.velocidade += 10;
     }
-    
-    public void frear(){
-        if(this.velocidade == 0){
+
+    public void frear() {
+        if (this.velocidade == 0) {
             return;
         }
-        
+
         this.velocidade -= 10;
     }
-    
-    public String imprimir(){
+
+    public String imprimir() {
         String rodas = "";
-        
-        for(Roda r : this.getRodas()){
-            rodas = r.imprimir() + ", ";
+
+        for (Roda r : this.getListaRodas()) {
+            rodas += ", " + r.imprimir();
         }
-        
-        return "Carro: { " +
-               "Marca: " + this.marca + 
-               ", Modelo: " + this.modelo + 
-               ", Velocidade: " + this.velocidade +
-               ", " + this.getMotor().imprimir() + 
-               ", Rodas: [" + 
-               rodas + 
-               "]" +
-               " }";
+
+        // Retira a virgula inicial caso tenham rodas vinculadas ao carro
+        if(rodas.length() > 0){
+            rodas = rodas.substring(2);
+        }
+
+        return "{ " +
+                "marca: " + this.getMarca() +
+                ", modelo: " + this.getModelo() +
+                ", velocidade: " + this.getVelocidade() +
+                ", motor: " + this.getMotor().imprimir() +
+                ", rodas: [ " + rodas + " ]" +
+                " }";
     }
 }
